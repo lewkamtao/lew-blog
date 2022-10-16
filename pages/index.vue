@@ -3,7 +3,7 @@ const name = ref("aaa");
 const { $api } = useNuxtApp();
 
 const res = await $api.get("/api/users", {});
-console.log(res.code);
+console.log(res.computed);
 onMounted(() => {});
 </script>
 
