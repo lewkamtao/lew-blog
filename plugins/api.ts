@@ -1,8 +1,7 @@
 import { defineNuxtPlugin } from "#app";
-// @ts-ignore
-import { _AsyncData } from "nuxt3/dist/app/composables/asyncData";
 
-let baseUrl = "http://adm.blog.kamtao.com/api";
+// let baseUrl = "http://adm.blog.kamtao.com/api";
+let baseUrl = "http://localhost:3998/app";
 
 // 指定后端返回的基本数据类型
 export interface ResponseConfig {
@@ -35,7 +34,7 @@ const fetch = (url: string, options?: any): Promise<any> => {
   const reqUrl = baseUrl + url;
   return new Promise((resolve, reject) => {
     useFetch(reqUrl, { ...options })
-      .then(({ data, error }: _AsyncData) => {
+      .then(({ data, error }: any) => {
         if (error?.value) {
           throw new Error(error.value);
         } else {

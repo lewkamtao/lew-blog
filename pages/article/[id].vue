@@ -7,4 +7,4 @@ const id = ref(route.params.id);
   <div>
     {{ id }}
   </div>
-</template>
+</template> 
