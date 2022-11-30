@@ -1,12 +1,29 @@
 <script setup lang="ts">
-import { ref } from "vue"
 const { $api } = useNuxtApp();
+const route = useRoute();
+const router = useRouter();
 const series: any = ref([])
+const curId = ref()
 
 series.value = (await $api.get("/series/list?is_publish=true", {})).data;
 
+
+watch((route), (v) => {
+    const id = route.params.id
+    curId.value = id
+})
+
+onMounted(() => {
+    const id = route.params.id
+    curId.value = id
+})
+
 const change = (item: any) => {
     item.isShow = !item.isShow
+}
+
+const toArticle = (id: Number) => {
+    router.push("/article/" + id)
 }
 </script>  
 
@@ -17,7 +34,6 @@ const change = (item: any) => {
             <i class="codicon codicon-chevron-right" aria-hidden="true"></i>
             <div class="h4">文章系列</div>
         </div>
-
         <div v-for="(item, index) in series" :key="index" class="item series-item">
             <div @click="change(item)" class="item-box" :class="{ active: item.isShow }">
                 <i class="codicon codicon-chevron-right" aria-hidden="true"></i>
@@ -32,7 +48,7 @@ const change = (item: any) => {
                 </div>
             </div>
             <div v-show="item.isShow" v-for="(article, index) in item.article" :key="index" class="item article-item">
-                <div class="item-box">
+                <div class="item-box" @click="toArticle(article.id)" :class="{ 'cur-item': curId == article.id }">
                     <div class="icon-box"> <i class="icon-seti icon-javascript" aria-hidden="true"></i></div>
                     {{ article?.title }}
                 </div>
@@ -49,13 +65,13 @@ const change = (item: any) => {
 
     .item-box {
         padding: 0px 8px;
-        height: 30px;
+        height: 28px;
         display: flex;
         align-items: center;
     }
 
     .item-box:hover {
-        background-color: var(--base15);
+        background-color: var(--base17);
     }
 
     .codicon {
@@ -90,5 +106,8 @@ const change = (item: any) => {
         }
     }
 
+    .cur-item {
+        background-color: var(--base14);
+    }
 }
 </style>

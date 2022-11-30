@@ -25,5 +25,6 @@ onMounted(() => {
 
 body {
     background-color: var(--base20);
+    color:var(--base06)
 }
 </style>  

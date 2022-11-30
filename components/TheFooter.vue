@@ -8,7 +8,7 @@
 
 <style lang="scss" scoped>
 .footer {
-    height: 28px;
+    height: 24px;
     background-color: var(--blue06);
 }
 </style> 

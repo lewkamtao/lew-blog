@@ -5,6 +5,9 @@ const { $api } = useNuxtApp();
 
 <template>
   <div class="lew">
+
+    文章内容
+    <!-- <i class="icon-seti icon-error" aria-hidden="true"></i>
     <i class="icon-seti icon-error" aria-hidden="true"></i>
     <i class="icon-seti icon-error" aria-hidden="true"></i>
     <i class="icon-seti icon-error" aria-hidden="true"></i>
@@ -15,8 +18,7 @@ const { $api } = useNuxtApp();
     <i class="icon-seti icon-error" aria-hidden="true"></i>
     <i class="icon-seti icon-error" aria-hidden="true"></i>
     <i class="icon-seti icon-error" aria-hidden="true"></i>
-    <i class="icon-seti icon-error" aria-hidden="true"></i>
-    <i class="icon-seti icon-error" aria-hidden="true"></i>
+    <i class="icon-seti icon-error" aria-hidden="true"></i> -->
   </div>
 </template> 
 
@@ -25,6 +27,7 @@ const { $api } = useNuxtApp();
   display: flex;
   justify-content: center;
   gap: 10px;
+
   i {
     padding: 10px;
   }
