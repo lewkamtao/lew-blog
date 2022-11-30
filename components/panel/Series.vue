@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue"
 
 </script>  
 
@@ -10,5 +9,5 @@ import { ref } from "vue"
 </template> 
   
 <style lang="scss" scoped>
-.search {}
+.series {}
 </style>

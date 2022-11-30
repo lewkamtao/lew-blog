@@ -5,7 +5,7 @@ const router = useRouter();
 const series: any = ref([])
 const curId = ref()
 
-series.value = (await $api.get("/series/list?is_publish=true", {})).data;
+series.value = (await $api.get("/series/list", {})).data;
 
 
 watch((route), (v) => {
@@ -107,7 +107,11 @@ const toArticle = (id: Number) => {
     }
 
     .cur-item {
-        background-color: var(--base14);
+        background-color: var(--base15);
+    }
+
+    .cur-item:hover {
+        background-color: var(--base15);
     }
 }
 </style>
