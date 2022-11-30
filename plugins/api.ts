@@ -1,7 +1,6 @@
 import { defineNuxtPlugin } from "#app";
 
-// let baseUrl = "http://adm.blog.kamtao.com/api";
-let baseUrl = "http://localhost:3998/app";
+let baseUrl = "https://api.lew.kamtao.com/blog/app";
 
 // 指定后端返回的基本数据类型
 export interface ResponseConfig {
@@ -32,6 +31,8 @@ export interface ResponseConfig {
 
 const fetch = (url: string, options?: any): Promise<any> => {
   const reqUrl = baseUrl + url;
+  console.log(reqUrl);
+  
   return new Promise((resolve, reject) => {
     useFetch(reqUrl, { ...options })
       .then(({ data, error }: any) => {

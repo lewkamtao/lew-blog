@@ -1,0 +1,147 @@
+:root {
+    --base01: #FFFFFF;
+    --base02: #F0F0F0;
+    --base03: #E7E7E7;
+    --base04: #E5E5E5;
+    --base05: #D4D4D4;
+    --base06: #CCCCCC;
+    --base07: #C6C6C6;
+    --base08: #BBBBBB;
+    --base09: #A0A0A0;
+    --base10: #808080;
+    --base11: #7F7F7F;
+    --base12: #606060;
+    --base13: #454545;
+    --base14: #3C3C3C;
+    --base15: #3A3D41;
+    --base16: #333333;
+    --base17: #303031;
+    --base18: #292929;
+    --base19: #262627;
+    --base20: #1E1E1E;
+    --base21: #000000;
+
+    --blue01: #75BEFF;
+    --blue02: #40A6FF;
+    --blue03: #3399CC;
+    --blue04: #3794FF;
+    --blue05: #0097FB;
+    --blue06: #007ACC;
+    --blue07: #0E639C;
+    --blue08: #264F78;
+    --blue09: #0A4771;
+    --blue10: #062F4A;
+    --blue11: #001F33;
+
+
+    --red01: #F14C4C;
+    --red02: #C74E39;
+    --red03: #FF0303;
+    --red04: #A31515;
+
+    --green01: #73C991;
+    --green02: #41C8AE;
+    --green03: #16825D;
+    --green04: #327E36;
+    --green05: #28632B;
+
+    --purple01: #6C6CC4;
+    --purple02: #B180D7;
+    --purple03: #BB40BC;
+    --purple04: #69237B;
+
+    --yellow01: #D7BA7D;
+    --yellow02: #CCA700;
+    --yellow03: #B89500;
+    --yellow04: #BF8803;
+    --yellow05: #FFFF00;
+
+    --orange01: #CC6633;
+    --orange02: #EE9D28;
+    --orange03: #EA5C00;
+
+    --gray01: #E4E6F1;
+    --gray02: #5F6A79;
+    --gray03: #424750;
+
+    --blue: #509AB9;
+    --green: #8DC14A;
+    --orange: #E37933;
+    --pink: #F55385;
+    --red: #CC3E44;
+    --steel: #7494A3;
+    --yellow: #CBCB41;
+    --purple: #A074C4;
+    --ignore: #41535B;
+    --white: #D4D7D6;
+    --gray: #6E8185;
+
+    --scalc: 2;
+
+
+
+    // 字体
+
+    .h1 {
+        font-size: 26px;
+        font-weight: normal;
+    }
+
+    .h2 {
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .h3 {
+        font-size: 13px;
+        font-weight: bolder;
+    }
+
+    .h4 {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .h5 {
+        font-size: 11px;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+
+    .h6 {
+        font-size: 11px;
+        font-weight: bolder;
+        text-transform: uppercase;
+    }
+
+    .b1 {
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .b2 {
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .label1 {
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .label2 {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .label3 {
+        font-size: 11px;
+        font-weight: normal;
+    }
+
+    .label4 {
+        font-size: 9px;
+        font-weight: bold;
+    }
+}

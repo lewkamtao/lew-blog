@@ -1,19 +1,29 @@
 <script setup lang="ts">
 const { $api } = useNuxtApp();
-const res = await $api.get("/blogger", {});
-const bloggerInfo = useBloggerInfo()
-bloggerInfo.value = res.data
 
 onMounted(() => {
-    console.log(res);
 });
 
 </script>  
   
 <template>
-    <div>
+    <div class="b1">
         <NuxtLayout>
             <NuxtPage />
         </NuxtLayout>
     </div>
 </template>
+
+<style lang="less">
+@import "~/assets/styles/seti/index.less";
+</style>
+
+<style lang="scss">
+@import "~/assets/styles/codicon.scss";
+@import "~/assets/styles/var.scss";
+@import "~/assets/styles/reset.scss";
+
+body {
+    background-color: var(--base20);
+}
+</style>  
