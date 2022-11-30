@@ -32,7 +32,7 @@ const toArticle = (id: Number) => {
     <div class="series-list">
         <div class="item-box active">
             <i class="codicon codicon-chevron-right" aria-hidden="true"></i>
-            <div class="h4">文章系列</div>
+            <div class="h4">文章列表</div>
         </div>
         <div v-for="(item, index) in series" :key="index" class="item series-item">
             <div @click="change(item)" class="item-box" :class="{ active: item.isShow }">
@@ -46,7 +46,10 @@ const toArticle = (id: Number) => {
             </div>
             <div v-show="item.isShow" v-for="(article, index) in item.article" :key="index" class="item article-item">
                 <div class="item-box" @click="toArticle(article.id)" :class="{ 'cur-item': curId == article.id }">
-                    <div class="icon-box"> <i class="icon-seti icon-javascript" aria-hidden="true"></i></div>
+                    <div class="icon-box">
+                        <i class="icon-seti" :class="'icon-' + item?.icon"
+                            aria-hidden="true"></i>
+                    </div>
                     {{ article?.title }}
                 </div>
             </div>
