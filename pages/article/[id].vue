@@ -11,7 +11,7 @@ article.value = data
  
 <template>
     <div class="article-wrapper">
-        <div class=""> {{ article.title }} </div>
+        <div class="h1"> {{ article.title }} </div>
         <div class="ck-content" v-html="article.content">
         </div>
     </div>
@@ -19,6 +19,14 @@ article.value = data
 
 <style scoped  lang="scss">
 .article-wrapper {
-    padding: 20px;
+    padding: 15px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    .h1 {
+        margin: 40px auto;
+    }
+    .ck-content {
+        margin-top: 50px;
+    }
 }
 </style>

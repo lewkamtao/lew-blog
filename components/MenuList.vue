@@ -40,11 +40,8 @@ const toArticle = (id: Number) => {
                 {{ item?.title }}
             </div>
             <div v-show="item.isShow" v-if="(item.article.length == 0)" class="item article-item">
-                <div class="item-box">
-                    <div class="icon-box">
-                        <i class="icon-seti icon-error" aria-hidden="true"></i>
-                    </div>
-                    暂无文章
+                <div class="item-box not-box">
+                    暂无相关文章
                 </div>
             </div>
             <div v-show="item.isShow" v-for="(article, index) in item.article" :key="index" class="item article-item">
@@ -104,6 +101,11 @@ const toArticle = (id: Number) => {
             width: 24px;
             height: 24px;
         }
+    }
+
+    .not-box {
+        opacity: 0.45;
+        padding-left: 36px;
     }
 
     .cur-item {
