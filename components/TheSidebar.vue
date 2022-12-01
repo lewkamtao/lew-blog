@@ -29,7 +29,7 @@ let modeList = ref(
         <div class="nav">
             <div class="top">
                 <div @click="mode = item.mode" v-for="(item, index) in modeList.top" :key="index" class="item"
-                    :class="{active:mode==item.mode}">
+                    :class="mode==item.mode?'active':''">
                     <i class="codicon" :class="`codicon-${item.icon}`" aria-hidden="true"></i>
                 </div>
             </div>
@@ -52,7 +52,7 @@ let modeList = ref(
 <style lang="scss" scoped>
 .sidebar {
     display: flex;
-    width: 400px;
+    width: 360px;
     height: 100%;
     overflow: hidden;
     user-select: none;
@@ -109,10 +109,11 @@ let modeList = ref(
     .sidebar-main {
         display: flex;
         flex-direction: column;
-        width: 352px;
+        width: 312px;
         height: 100%;
         background-color: var(--base19);
         box-sizing: border-box;
+        overflow: auto;
     }
 }
 </style>

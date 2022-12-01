@@ -24,7 +24,7 @@
         display: flex;
 
         .wrapper {
-            width: calc(100% - 400px);
+            width: calc(100% - 360px);
             height: 100%;
             overflow-y: auto;
 

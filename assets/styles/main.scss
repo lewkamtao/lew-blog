@@ -1,0 +1,19 @@
+.article-main::-webkit-scrollbar {
+    background-color: var(--base20);
+}
+
+.article-main::-webkit-scrollbar-thumb {
+    background-color: var(--base15);
+}
+
+.sidebar-main::-webkit-scrollbar {
+    background-color: var(--base19);
+}
+
+.sidebar-main::-webkit-scrollbar-thumb {
+    background-color: var(--base19);
+}
+
+.sidebar-main:hover::-webkit-scrollbar-thumb {
+    background-color: var(--base15);
+}

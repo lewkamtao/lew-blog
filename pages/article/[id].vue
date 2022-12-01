@@ -10,23 +10,46 @@ article.value = data
 </script>
  
 <template>
+
     <div class="article-wrapper">
-        <div class="h1"> {{ article.title }} </div>
-        <div class="ck-content" v-html="article.content">
+        <div class="article-main">
+            <div class="article-body">
+                <div class="h1"> {{ article.title }} </div>
+                <div class="ck-content" v-html="article.content"> </div>
+            </div>
+        </div>
+        <div class="comment">
         </div>
     </div>
 </template> 
 
 <style scoped  lang="scss">
 .article-wrapper {
-    padding: 15px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    .h1 {
-        margin: 40px auto;
+    display: flex;
+
+
+    .article-main {
+        height: calc(100vh - 22px);
+        overflow-y: auto;
+        padding: 50px;
+        min-width: 800px;
+        width: calc(100% - 400px);
+        box-sizing: border-box;
+        background-color: var(--base20);
+
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ck-content {
+            margin: 50px 0px;
+        }
     }
-    .ck-content {
-        margin-top: 50px;
+
+    .comment {
+        width: 400px;
+        background-color: var(--base18);
     }
 }
 </style>

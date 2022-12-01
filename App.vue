@@ -22,6 +22,7 @@ onMounted(() => {
 @import "~/assets/styles/codicon.scss";
 @import "~/assets/styles/var.scss";
 @import "~/assets/styles/reset.scss";
+@import "~/assets/styles/main.scss";
 @import "~/assets/styles/editor.css";
 
 body {
