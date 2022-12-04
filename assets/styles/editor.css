@@ -4,7 +4,7 @@
  * For more information, check out https://ckeditor.com/docs/ckeditor5/latest/installation/advanced/content-styles.html
  */
 
- :root {
+:root {
     --ck-color-image-caption-background: hsl(0, 0%, 97%);
     --ck-color-image-caption-text: hsl(0, 0%, 20%);
     --ck-color-mention-background: hsla(341, 100%, 30%, 0.1);
@@ -14,7 +14,7 @@
     --ck-highlight-marker-blue: hsl(201, 97%, 72%);
     --ck-highlight-marker-green: hsl(120, 93%, 68%);
     --ck-highlight-marker-pink: hsl(345, 96%, 73%);
-    --ck-highlight-marker-yellow: hsl(60, 97%, 73%);
+    --ck-highlight-marker-yellow: var(--yellow01);
     --ck-highlight-pen-green: hsl(112, 100%, 27%);
     --ck-highlight-pen-red: hsl(0, 85%, 49%);
     --ck-image-style-spacing: 1.5em;
@@ -379,13 +379,13 @@
     box-sizing: content-box;
     pointer-events: none;
     content: '';
-    left: calc( var(--ck-todo-list-checkmark-size) / 3);
-    top: calc( var(--ck-todo-list-checkmark-size) / 5.3);
-    width: calc( var(--ck-todo-list-checkmark-size) / 5.3);
-    height: calc( var(--ck-todo-list-checkmark-size) / 2.6);
+    left: calc(var(--ck-todo-list-checkmark-size) / 3);
+    top: calc(var(--ck-todo-list-checkmark-size) / 5.3);
+    width: calc(var(--ck-todo-list-checkmark-size) / 5.3);
+    height: calc(var(--ck-todo-list-checkmark-size) / 2.6);
     border-style: solid;
     border-color: transparent;
-    border-width: 0 calc( var(--ck-todo-list-checkmark-size) / 8) calc( var(--ck-todo-list-checkmark-size) / 8) 0;
+    border-width: 0 calc(var(--ck-todo-list-checkmark-size) / 8) calc(var(--ck-todo-list-checkmark-size) / 8) 0;
     transform: rotate(45deg);
 }
 
@@ -559,9 +559,9 @@
 
 .ck-content pre {
     padding: 1em;
-    color: hsl(0, 0%, 20.8%);
-    background: hsla(0, 0%, 78%, 0.3);
-    border: 1px solid hsl(0, 0%, 77%);
+    color: var(--base06);
+    background: var(--base14);
+    border: 1px solid var(--base12);
     border-radius: 2px;
     text-align: left;
     direction: ltr;
@@ -662,10 +662,12 @@
 }
 
 @media print {
+
     /* ckeditor5-page-break/theme/pagebreak.css */
     .ck-content .page-break {
         padding: 0;
     }
+
     /* ckeditor5-page-break/theme/pagebreak.css */
     .ck-content .page-break::after {
         display: none;

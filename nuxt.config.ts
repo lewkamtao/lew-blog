@@ -3,9 +3,10 @@ export default defineNuxtConfig({
   vite: {
     server: {
       proxy: {
-        "/app": {
-          target: "https://api.lew.kamtao.com/blog", //这里是接口地址
+        "/api": {
+          target: "https://api.lew.kamtao.com/", //这里是接口地址
           changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ""),
         },
       },
     },

@@ -1,6 +1,6 @@
 import { defineNuxtPlugin } from "#app";
 
-let baseUrl = "http://localhost:3000/app";
+let baseUrl = "http://localhost:3000/api/blog/";
 
 // 指定后端返回的基本数据类型
 export interface ResponseConfig {
@@ -13,10 +13,10 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       api: {
-        get: (url, params) => fetch(url, { method: "get", ...params }),
-        put: (url, params) => fetch(url, { method: "post", ...params }),
-        post: (url, params) => fetch(url, { method: "put", ...params }),
-        delete: (url, params) => fetch(url, { method: "delete", ...params }),
+        get: (url, params?) => fetch(url, { method: "get", ...params }),
+        put: (url, params?) => fetch(url, { method: "post", ...params }),
+        post: (url, params?) => fetch(url, { method: "put", ...params }),
+        delete: (url, params?) => fetch(url, { method: "delete", ...params }),
       },
     },
   };
@@ -30,10 +30,11 @@ export interface ResponseConfig {
 }
 
 const fetch = (url: string, options?: any): Promise<any> => {
-  const reqUrl = baseUrl +  url;
-  
+  const reqUrl = baseUrl + url;
+
   return new Promise((resolve, reject) => {
     useFetch(reqUrl, {
+      key: reqUrl,
       ...options,
     })
       .then(({ data, error }: any) => {

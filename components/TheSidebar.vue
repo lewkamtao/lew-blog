@@ -5,15 +5,22 @@ let modeList = ref(
     {
         top: [{
             mode: "series",
-            icon: "files"
+            icon: "files",
+
         }, {
             mode: "search",
             icon: "search"
-        }],
-
-
+        }, {
+            mode: "links",
+            icon: "source-control"
+        }, {
+            mode: "github",
+            icon: "github",
+            link: "https://github.com/lewkamtao",
+        },
+        ],
         bottom: [{
-            mode: "user",
+            mode: "blogger",
             icon: "account"
         }, {
             mode: "setting",
@@ -22,29 +29,44 @@ let modeList = ref(
     }
 )
 
+
+
+const changeMode = (item) => {
+    if (item?.link) {
+        window.open(item.link, '_blank');
+    } else {
+        mode.value = item.mode
+    }
+}
+
+
 </script>  
 
 <template>
     <div class="sidebar">
         <div class="nav">
             <div class="top">
-                <div @click="mode = item.mode" v-for="(item, index) in modeList.top" :key="index" class="item"
+                <div @click="changeMode(item)" v-for="(item, index) in modeList.top" :key="index" class="item"
                     :class="mode==item.mode?'active':''">
                     <i class="codicon" :class="`codicon-${item.icon}`" aria-hidden="true"></i>
+                    <div v-if="item.mode == 'links'" class="vs-badge">
+                        9
+                    </div>
                 </div>
             </div>
             <div class="bottom">
-                <div @click="mode = item.mode" v-for="(item, index) in modeList.bottom" :key="index" class="item"
+                <div @click="changeMode(item)" v-for="(item, index) in modeList.bottom" :key="index" class="item"
                     :class="{ active: mode == item.mode }">
                     <i class="codicon" :class="`codicon-${item.icon}`" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
         <div class="sidebar-main">
-            <panel-series v-if="mode == 'series'" />
-            <panel-search v-if="mode == 'search'" />
-            <panel-user v-if="mode == 'user'" />
-            <panel-setting v-if="mode == 'setting'" />
+            <panel-series v-show="mode == 'series'" />
+            <panel-search v-show="mode == 'search'" />
+            <panel-links v-show="mode == 'links'" />
+            <panel-blogger v-show="mode == 'blogger'" />
+            <panel-setting v-show="mode == 'setting'" />
         </div>
     </div>
 </template> 
@@ -55,7 +77,6 @@ let modeList = ref(
     width: 360px;
     height: 100%;
     overflow: hidden;
-    user-select: none;
 
     .nav {
         display: flex;
@@ -65,6 +86,8 @@ let modeList = ref(
         height: 100%;
         background-color: var(--base16);
         box-sizing: border-box;
+
+
 
         .item {
             position: relative;
@@ -78,6 +101,12 @@ let modeList = ref(
             .codicon {
                 color: var(--base10);
                 font-size: 24px;
+            }
+
+            .vs-badge {
+                position: absolute;
+                right: 5px;
+                bottom: 5px;
             }
         }
 
@@ -113,7 +142,8 @@ let modeList = ref(
         height: 100%;
         background-color: var(--base19);
         box-sizing: border-box;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 }
 </style>

@@ -5,7 +5,7 @@ const router = useRouter();
 const series: any = ref([])
 const curId = ref()
 
-series.value = (await $api.get("/series/list", {})).data;
+series.value = (await $api.get("/app/series/list")).data;
 
 
 watch((route), (v) => {
@@ -47,12 +47,12 @@ const toArticle = (id: Number) => {
             <div v-show="item.isShow" v-for="(article, index) in item.article" :key="index" class="item article-item">
                 <div class="item-box" @click="toArticle(article.id)" :class="{ 'cur-item': curId == article.id }">
                     <div class="icon-box">
-                        <i class="icon-seti" :class="'icon-' + item?.icon"
-                            aria-hidden="true"></i>
+                        <i class="icon-seti" :class="'icon-' + item?.icon" aria-hidden="true"></i>
                     </div>
                     {{ article?.title }}
                 </div>
             </div>
+            <div class="article-total">{{ item?.article?.length }}</div>
         </div>
     </div>
 </template> 
@@ -61,6 +61,7 @@ const toArticle = (id: Number) => {
 .series-list {
     width: 100%;
     color: var(--base06);
+    user-select: none;
     cursor: pointer;
 
     .item-box {
@@ -87,8 +88,17 @@ const toArticle = (id: Number) => {
 
 
 .series-item {
+    position: relative;
+
     .item-box {
         padding-left: 16px;
+    }
+
+    .article-total {
+        position: absolute;
+        right: 20px;
+        top: 5px;
+        color: var(--base12);
     }
 
 }
@@ -103,7 +113,6 @@ const toArticle = (id: Number) => {
             justify-content: center;
             width: 24px;
             height: 24px;
-            margin-right: 4px;
         }
     }
 
