@@ -14,13 +14,12 @@ let modeList = ref(
             mode: "links",
             icon: "source-control"
         }, {
-            mode: "github",
+            mode: "blogger",
             icon: "github",
-            link: "https://github.com/lewkamtao",
         },
         ],
         bottom: [{
-            mode: "blogger",
+            mode: "user",
             icon: "account"
         }, {
             mode: "setting",
@@ -67,6 +66,7 @@ const changeMode = (item) => {
             <panel-links v-show="mode == 'links'" />
             <panel-blogger v-show="mode == 'blogger'" />
             <panel-setting v-show="mode == 'setting'" />
+            <panel-user v-show="mode == 'user'" />
         </div>
     </div>
 </template> 

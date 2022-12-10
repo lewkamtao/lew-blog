@@ -13,6 +13,11 @@
     color: #555;
 }
 
+.wrapper::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background-color: var(--base20);
+}
 
 .article-main::-webkit-scrollbar {
     background-color: var(--base20);
@@ -23,6 +28,18 @@
 }
 
 .article-main:hover::-webkit-scrollbar-thumb {
+    background-color: var(--base15);
+}
+
+.vs-textarea::-webkit-scrollbar {
+    background-color: var(--base20);
+}
+
+.vs-textarea::-webkit-scrollbar-thumb {
+    background-color: var(--base20);
+}
+
+.vs-textarea:hover::-webkit-scrollbar-thumb {
     background-color: var(--base15);
 }
 
@@ -37,8 +54,6 @@
 .comment-wrapper:hover::-webkit-scrollbar-thumb {
     background-color: var(--base14);
 }
-
-
 
 .sidebar-main::-webkit-scrollbar {
     background-color: var(--base19);
@@ -60,6 +75,7 @@
     height: 30px;
     width: 100%;
     padding: 0px 5px;
+    border: 1px rgba($color: #000000, $alpha: 0) solid;
     box-sizing: border-box;
 }
 
@@ -67,7 +83,24 @@
     border: 1px var(--blue06) solid;
 }
 
+.vs-textarea {
+    background-color: var(--base14);
+    border: none;
+    outline: none;
+    color: var(--base06);
+    height: 30px;
+    width: 100%;
+    padding: 0px 5px;
+    box-sizing: border-box;
+    resize: none;
+    padding: 10px;
+    border: 1px rgba($color: #000000, $alpha: 0) solid;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.vs-textarea:focus {
+    border: 1px var(--blue06) solid;
+}
 
 .vs-tag {
     display: flex;
@@ -93,4 +126,25 @@
     font-size: 12px;
     padding: 1px 2px;
     font-weight: 500;
+}
+
+.vs-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    font-size: 14px;
+    background-color: var(--blue06);
+    box-sizing: border-box;
+    color: var(--base01);
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.vs-button:hover {
+    background-color: var(--blue05);
+}
+
+.vs-button:active {
+    background-color: var(--blue07);
 }
