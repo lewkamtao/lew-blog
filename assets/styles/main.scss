@@ -1,16 +1,16 @@
 ::selection {
-    background:#d3d3d3; 
-    color:#555;
+    background: #d3d3d3;
+    color: #555;
 }
 
 ::-moz-selection {
-    background:#d3d3d3; 
-    color:#555;
+    background: #d3d3d3;
+    color: #555;
 }
 
 ::-webkit-selection {
-    background:#d3d3d3; 
-    color:#555;
+    background: #d3d3d3;
+    color: #555;
 }
 
 
@@ -25,6 +25,20 @@
 .article-main:hover::-webkit-scrollbar-thumb {
     background-color: var(--base15);
 }
+
+.comment-wrapper::-webkit-scrollbar {
+    background-color: var(--base18);
+}
+
+.comment-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--base18);
+}
+
+.comment-wrapper:hover::-webkit-scrollbar-thumb {
+    background-color: var(--base14);
+}
+
+
 
 .sidebar-main::-webkit-scrollbar {
     background-color: var(--base19);
