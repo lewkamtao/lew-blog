@@ -109,7 +109,7 @@ const setChildReply = (child) => {
                 </div>
                 <div v-else class="left">
                     回复
-                    <span>@ {{ reply.nickname }}</span>
+                    <span>@{{ reply.nickname }}</span>
                 </div>
                 <div class="vs-button" @click="send">
                     发送
