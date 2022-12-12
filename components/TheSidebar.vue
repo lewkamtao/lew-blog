@@ -11,10 +11,10 @@ let modeList = ref({
       mode: "search",
       icon: "search",
     },
-    // {
-    //   mode: "links",
-    //   icon: "source-control",
-    // },
+    {
+      mode: "links",
+      icon: "source-control",
+    },
     // {
     //   mode: "comment",
     //   icon: "comment",
@@ -24,7 +24,6 @@ let modeList = ref({
       icon: "github",
       link: "https://github.com/lewkamtao",
     },
-   
   ],
   bottom: [
     {
