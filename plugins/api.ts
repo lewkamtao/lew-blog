@@ -13,10 +13,14 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       api: {
-        get: (url, params?) => fetch(url, { method: "get", ...params }),
-        put: (url, params?) => fetch(url, { method: "put", ...params }),
-        post: (url, params?) => fetch(url, { method: "post", ...params }),
-        delete: (url, params?) => fetch(url, { method: "delete", ...params }),
+        get: async (url, params?) =>
+          await fetch(url, { method: "get", ...params }),
+        put: async (url, params?) =>
+          await fetch(url, { method: "put", ...params }),
+        post: async (url, params?) =>
+          await fetch(url, { method: "post", ...params }),
+        delete: async (url, params?) =>
+          await fetch(url, { method: "delete", ...params }),
       },
     },
   };
