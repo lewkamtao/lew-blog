@@ -31,7 +31,11 @@ export interface ResponseConfig {
 
 const fetch = (url: string, options?: any): Promise<any> => {
   const reqUrl = baseUrl + url;
-  const token = useCookie("token");
+  let token = "";
+  if (useCookie("token")?.value) {
+    token = useCookie("token")?.value.replace(/Bearer\+/, "Bearer ");
+  }
+
   const key = options.method == "get" ? reqUrl : String(new Date().getTime());
   return new Promise((resolve, reject) => {
     useFetch(reqUrl, {
@@ -39,7 +43,7 @@ const fetch = (url: string, options?: any): Promise<any> => {
       ...options,
       mode: "cors",
       headers: {
-        Authorization: token.value.replace(/Bearer\+/, "Bearer "),
+        Authorization: token,
       },
     })
       .then(({ data, error }: any) => {
