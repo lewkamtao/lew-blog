@@ -18,7 +18,7 @@ const search = (e) => {
     return;
   }
   timer = setTimeout(async () => {
-    var res = await $api.get("/app/article/list?limit=2000&title=" + v);
+    var res = await $api.get("/blog/app/article/list?limit=2000&title=" + v);
     list.value = res.data;
     total.value = res.total || 0;
   }, 250);

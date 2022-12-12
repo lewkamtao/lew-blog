@@ -3,14 +3,15 @@ export default defineNuxtConfig({
   vite: {
     server: {
       proxy: {
-        "/api": {
-          target: "https://api.lew.kamtao.com/", //这里是接口地址
+        "/blog": {
+          target: "https://api.lew.kamtao.com/blog/",
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
+          rewrite: (path) => path.replace(/^\/blog/, ""),
         },
       },
     },
   },
+
   meta: [
     // <meta name="viewport" content="width=device-width, initial-scale=1">
     { name: "viewport", content: "width=device-width, initial-scale=1" },

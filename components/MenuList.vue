@@ -5,7 +5,7 @@ const router = useRouter();
 const series: any = ref([]);
 const curId = ref();
 
-series.value = (await $api.get("/app/series/list")).data;
+series.value = (await $api.get("/blog/app/series/list")).data;
 
 watch(route, (v) => {
   const id = route.params.id;
