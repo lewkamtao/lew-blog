@@ -37,7 +37,7 @@ const toArticle = (id: Number) => {
         <i class="codicon codicon-chevron-right" aria-hidden="true"></i>
         {{ item?.title }}
       </div>
-      <div v-show="item.isShow" v-if="item.article.length == 0" class="item article-item">
+      <div @click.stop v-show="item.isShow" v-if="item.article.length == 0" class="item article-item">
         <div class="item-box not-box">暂无相关文章</div>
       </div>
       <div @click.stop="toArticle(article.id)" v-show="item.isShow" v-for="(article, index) in item.article"
