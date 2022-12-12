@@ -1,6 +1,6 @@
 import { defineNuxtPlugin } from "#app";
 
-let baseUrl = "http://localhost:3000";
+let baseUrl = "https://api.lew.kamtao.com";
 
 // 指定后端返回的基本数据类型
 export interface ResponseConfig {
@@ -13,14 +13,10 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       api: {
-        get: async (url, params?) =>
-          await fetch(url, { method: "get", ...params }),
-        put: async (url, params?) =>
-          await fetch(url, { method: "put", ...params }),
-        post: async (url, params?) =>
-          await fetch(url, { method: "post", ...params }),
-        delete: async (url, params?) =>
-          await fetch(url, { method: "delete", ...params }),
+        get: (url, params?) => fetch(url, { method: "get", ...params }),
+        put: (url, params?) => fetch(url, { method: "put", ...params }),
+        post: (url, params?) => fetch(url, { method: "post", ...params }),
+        delete: (url, params?) => fetch(url, { method: "delete", ...params }),
       },
     },
   };
@@ -41,6 +37,7 @@ const fetch = (url: string, options?: any): Promise<any> => {
     useFetch(reqUrl, {
       key: key,
       ...options,
+      mode: "cors",
       headers: {
         Authorization: token.value.replace(/Bearer\+/, "Bearer "),
       },
