@@ -62,6 +62,13 @@ const setChildReply = (child) => {
     comment_id.value = child.comment_id
 }
 
+const cancelReply = () => {
+    reply.value = {
+        id: 0,
+        nickname: ""
+    };
+    comment_id.value = 0;
+}
 
 </script>   
 
@@ -110,6 +117,7 @@ const setChildReply = (child) => {
                 <div v-else class="left">
                     回复
                     <span>@{{ reply.nickname }}</span>
+                    <span @click="cancelReply" class="cancel-btn">取消回复</span>
                 </div>
                 <div class="vs-button" @click="send">
                     发送
@@ -223,6 +231,12 @@ const setChildReply = (child) => {
         background-color: var(--base16);
         display: flex;
         flex-direction: column;
+
+        .cancel-btn {
+            color: var(--blue06);
+            margin-left: 10px;
+            cursor: pointer;
+        }
 
         .login-panel {
             position: absolute;
