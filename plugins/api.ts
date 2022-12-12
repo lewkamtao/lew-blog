@@ -1,6 +1,6 @@
 import { defineNuxtPlugin } from "#app";
 
-let baseUrl = "http://localhost:3000/api/blog/";
+let baseUrl = "http://localhost:3000/api/blog";
 
 // 指定后端返回的基本数据类型
 export interface ResponseConfig {
