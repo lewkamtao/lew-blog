@@ -1,129 +1,124 @@
 <script setup>
-import { dateFormat } from "@/utils"
+import { dateFormat } from "@/utils";
 const { $api } = useNuxtApp();
 const route = useRoute();
 const id = route.params.id;
 
-let article = ref({})
-const { data } = (await $api.get("/blog/app/article/" + id));
-article.value = data
-
+let article = ref({});
+const { data } = await $api.get("/blog/app/article/" + id);
+article.value = data;
+useHead({
+  title: article.value.title,
+});
 </script>
- 
+
 <template>
-
-    <div class="article-wrapper">
-        <div class="article-main">
-            <div class="article-body">
-                <div class="h1"> {{ article.title }} </div>
-                <div class="info">
-                    <div class="left">
-                        <div class="item nickname">
-                            作者：{{ article?.blogger?.nickname }} <i class="codicon codicon-verified-filled"></i>
-                        </div>
-                        <div class="item">
-                            系列：<span class="vs-tag">{{ article.series.title }}</span>
-                        </div>
-                        <div class="item">
-                            标签：<div class="tags">
-                                <span class="vs-tag" v-for="(item, index) in article.tags" :key="index">{{ item.title
-                                }}</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="right">
-                        <div class="item">
-                            浏览量：{{ article.view_num || "暂无" }}
-                        </div>
-                        <div class="item">
-                            最后修改时间：{{ dateFormat(article.updated_at) }}
-                        </div>
-                    </div>
-
-                </div>
-                <div class="ck-content" v-html="article.content"> </div>
+  <div class="article-wrapper">
+    <div class="article-main">
+      <div class="article-body">
+        <div class="h1">{{ article.title }}</div>
+        <div class="info">
+          <div class="left">
+            <div class="item nickname">
+              作者：{{ article?.blogger?.nickname }}
+              <i class="codicon codicon-verified-filled"></i>
             </div>
+            <div class="item">
+              系列：<span class="vs-tag">{{ article.series.title }}</span>
+            </div>
+            <div class="item">
+              标签：
+              <div class="tags">
+                <span class="vs-tag" v-for="(item, index) in article.tags" :key="index">{{
+                  item.title
+                }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="item">浏览量：{{ article.view_num || "暂无" }}</div>
+            <div class="item">最后修改时间：{{ dateFormat(article.updated_at) }}</div>
+          </div>
         </div>
-        <Comment />
+        <div class="ck-content" v-html="article.content"></div>
+      </div>
     </div>
-</template> 
+    <Comment />
+  </div>
+</template>
 
-<style scoped  lang="scss">
+<style scoped lang="scss">
 .article-wrapper {
-    display: flex;
+  display: flex;
 
+  .article-main {
+    height: calc(100vh - 22px);
+    overflow-y: scroll;
+    padding: 50px;
+    min-width: 800px;
+    width: calc(100% - 400px);
+    box-sizing: border-box;
+    background-color: var(--base20);
 
-    .article-main {
-        height: calc(100vh - 22px);
-        overflow-y: scroll;
-        padding: 50px;
-        min-width: 800px;
-        width: calc(100% - 400px);
-        box-sizing: border-box;
-        background-color: var(--base20);
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 7px;
+      margin-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px var(--base18) solid;
 
-        .info {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 7px;
-            margin-top: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px var(--base18) solid;
+      .left,
+      .right {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .right {
+        align-items: flex-end;
+      }
 
-            .left,
-            .right {
-                display: flex;
-                flex-direction: column;
-                gap: 7px;
+      .item {
+        display: flex;
+        align-items: center;
+        color: var(--base08);
 
-            }
-            .right {
-                align-items: flex-end;
-            }
+        .tags {
+          display: flex;
+          gap: 5px;
 
-            .item {
-                display: flex;
-                align-items: center;
-                color: var(--base08);
-
-                .tags {
-                    display: flex;
-                    gap: 5px;
-
-                    .vs-tag {
-                        cursor: pointer;
-                    }
-                }
-            }
-
-            .nickname {
-
-                display: flex;
-                align-items: center;
-                gap: 4px;
-
-                .codicon {
-                    color: var(--blue06);
-                    font-size: 18px;
-                }
-            }
+          .vs-tag {
+            cursor: pointer;
+          }
         }
+      }
 
-        .article-body {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+      .nickname {
+        display: flex;
+        align-items: center;
+        gap: 4px;
 
-        .ck-content {
-            margin: 50px 0px;
+        .codicon {
+          color: var(--blue06);
+          font-size: 18px;
         }
+      }
     }
 
-    .comment {
-        width: 400px;
-        background-color: var(--base18);
+    .article-body {
+      max-width: 800px;
+      margin: 0 auto;
     }
+
+    .ck-content {
+      margin: 50px 0px;
+    }
+  }
+
+  .comment {
+    width: 400px;
+    background-color: var(--base18);
+  }
 }
 </style>
