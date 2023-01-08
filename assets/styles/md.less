@@ -1,0 +1,28 @@
+.css-vars(@isDark) {
+  --md-bk-color: if(@isDark, var(--base20), #fff);
+}
+
+.md-editor {
+  .css-vars(false);
+}
+
+.md-editor-dark {
+  .css-vars(true);
+}
+
+.md-editor-dark {
+  --md-bk-color: var(--base20) !important;
+}
+
+.md-editor-dark .default-theme pre code {
+  padding-top: 0px;
+  background-color: #282c34 !important;
+}
+
+.md-editor-dark .default-theme pre:before {
+  background-color: #282c34 !important;
+}
+
+.default-theme pre {
+  box-shadow: none !important;
+}

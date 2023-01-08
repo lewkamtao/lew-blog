@@ -1,5 +1,8 @@
 <script setup>
 import { dateFormat } from "@/utils";
+import MdEditor from 'md-editor-v3';
+import 'md-editor-v3/lib/style.css';
+
 const { $api } = useNuxtApp();
 const route = useRoute();
 const id = route.params.id;
@@ -40,7 +43,7 @@ useHead({
             <div class="item">最后修改时间：{{ dateFormat(article.updated_at) }}</div>
           </div>
         </div>
-        <div class="ck-content" v-html="article.content"></div>
+        <md-editor v-model="article.content" preview-only theme="dark" />
       </div>
     </div>
     <Comment />
@@ -75,6 +78,7 @@ useHead({
         flex-direction: column;
         gap: 7px;
       }
+
       .right {
         align-items: flex-end;
       }

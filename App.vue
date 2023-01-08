@@ -39,6 +39,8 @@ onMounted(() => {
 
 <style lang="less">
 @import "~/assets/styles/seti/index.less";
+@import "~/assets/styles/md.less";
+
 </style>
 
 <style lang="scss">
@@ -46,8 +48,6 @@ onMounted(() => {
 @import "~/assets/styles/var.scss";
 @import "~/assets/styles/reset.scss";
 @import "~/assets/styles/main.scss";
-@import "~/assets/styles/editor.css";
-
 body {
     background-color: var(--base20);
     color: var(--base06)
