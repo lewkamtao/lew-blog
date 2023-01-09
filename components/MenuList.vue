@@ -12,6 +12,18 @@ watch(route, (v) => {
   curId.value = id;
 });
 
+const seriesActive = useSeriesActive();
+watch(seriesActive, (v) => {
+  series.value = series.value.map((e) => {
+    return {
+      ...e,
+      isShow: false,
+    };
+  });
+  let index = series.value.findIndex((e) => e.id == v);
+  series.value[index].isShow = true;
+});
+
 onMounted(() => {
   const id = route.params.id;
   curId.value = id;

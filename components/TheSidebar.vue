@@ -37,6 +37,13 @@ let modeList = ref({
   ],
 });
 
+const menuActive = useMenuActive();
+
+watch(menuActive, (v) => {
+  let list = [...modeList.value.top, ...modeList.value.bottom];
+  changeMode(list.find((e) => e.mode == v));
+});
+
 const changeMode = (item) => {
   if (item?.link) {
     window.open(item.link, "_blank");
