@@ -8,6 +8,7 @@ let list = ref([]);
 let total = ref(0);
 let curId = ref();
 let timer;
+let keyword = ref("");
 
 const search = (e) => {
   clearTimeout(timer);
@@ -42,8 +43,14 @@ const toArticle = (id: Number) => {
 <template>
   <div class="search">
     <label>搜索</label>
-    <input id="search-input" @input="search" class="vs-input" />
-    <div class="total">共查询 {{ total }} 个结果</div>
+    <input
+      id="search-input"
+      v-model="keyword"
+      @input="search"
+      placeholder="搜索关键词"
+      class="vs-input"
+    />
+    <div v-if="keyword" class="total">共查询 {{ total }} 个结果</div>
     <div class="list">
       <div v-for="(article, index) in list" :key="index" class="item article-item">
         <div
@@ -58,7 +65,7 @@ const toArticle = (id: Number) => {
               aria-hidden="true"
             ></i>
           </div>
-          {{ article?.title }}
+          <div class="title" :title="article?.title">{{ article?.title }}</div>
         </div>
       </div>
     </div>
@@ -95,6 +102,12 @@ const toArticle = (id: Number) => {
         justify-content: center;
         width: 24px;
         height: 24px;
+      }
+      .title {
+        width: calc(100% - 50px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .item-box:hover {

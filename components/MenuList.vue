@@ -52,7 +52,7 @@ const toArticle = (id: Number) => {
     >
       <div class="item-box" :class="{ active: item.isShow }">
         <i class="codicon codicon-chevron-right" aria-hidden="true"></i>
-        <div class="title">
+        <div class="title" :title="item?.title">
           {{ item?.title }}
         </div>
       </div>
@@ -75,7 +75,7 @@ const toArticle = (id: Number) => {
           <div class="icon-box">
             <i class="icon-seti" :class="'icon-' + item?.icon" aria-hidden="true"></i>
           </div>
-          <div class="title">
+          <div class="title" :title="item?.title">
             {{ article?.title }}
           </div>
         </div>
