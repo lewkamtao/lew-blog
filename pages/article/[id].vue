@@ -1,7 +1,7 @@
 <script setup>
 import { dateFormat } from "@/utils";
-import MdEditor from 'md-editor-v3';
-import 'md-editor-v3/lib/style.css';
+import MdEditor from "md-editor-v3";
+import "md-editor-v3/lib/style.css";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -22,25 +22,26 @@ useHead({
         <div class="h1">{{ article.title }}</div>
         <div class="info">
           <div class="left">
-            <div class="item nickname">
-              作者：{{ article?.blogger?.nickname }}
-              <i class="codicon codicon-verified-filled"></i>
-            </div>
             <div class="item">
               系列：<span class="vs-tag">{{ article.series.title }}</span>
             </div>
             <div class="item">
               标签：
               <div class="tags">
-                <span class="vs-tag" v-for="(item, index) in article.tags" :key="index">{{
-                  item.title
-                }}</span>
+                <span
+                  class="vs-tag"
+                  v-for="(item, index) in article.tags"
+                  :key="index"
+                  >{{ item.title }}</span
+                >
               </div>
             </div>
           </div>
           <div class="right">
             <div class="item">浏览量：{{ article.view_num || "暂无" }}</div>
-            <div class="item">最后修改时间：{{ dateFormat(article.updated_at) }}</div>
+            <div class="item">
+              最后修改时间：{{ dateFormat(article.updated_at) }}
+            </div>
           </div>
         </div>
         <md-editor v-model="article.content" preview-only theme="dark" />
