@@ -6,6 +6,13 @@ const series: any = ref([]);
 const curId = ref();
 
 series.value = (await $api.get("/blog/app/series/list")).data;
+let seriestotal = (await $api.get("/blog/app/series/list")).total;
+let articleTotal = (await $api.get("/blog/app/article/list")).total;
+let blog: any = useBlog();
+blog.value = {
+  seriesTotal: seriestotal,
+  articleTotal: articleTotal,
+};
 
 watch(route, (v) => {
   const id = route.params.id;
@@ -42,7 +49,7 @@ const toArticle = (id: Number) => {
   <div class="series-list">
     <div @click="router.push('/')" class="item-box active">
       <i class="codicon codicon-chevron-right" aria-hidden="true"></i>
-      <div class="h4">VISUAL-STUDIO-BLOG</div>
+      <div class="h4">LEW-BLOG</div>
     </div>
     <div
       @click="change(item)"
@@ -73,7 +80,11 @@ const toArticle = (id: Number) => {
       >
         <div class="item-box" :class="{ 'cur-item': curId == article.id }">
           <div class="icon-box">
-            <i class="icon-seti" :class="'icon-' + item?.icon" aria-hidden="true"></i>
+            <i
+              class="icon-seti"
+              :class="'icon-' + item?.icon"
+              aria-hidden="true"
+            ></i>
           </div>
           <div class="title" :title="item?.title">
             {{ article?.title }}

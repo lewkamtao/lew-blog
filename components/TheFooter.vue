@@ -1,15 +1,40 @@
 <script setup lang="ts">
-
+import { useNavigatorLanguage } from "@vueuse/core";
+const blog = useBlog();
+const route = useRoute();
+const { language } = useNavigatorLanguage();
 </script>
 <template>
-    <div class="footer">
+  <div class="footer">
+    <div>
+      <span> Current version 1.12.0 </span>
+      <span> PATH {{ route.path }} </span>
+      <span> Language {{ language }} </span>
+      <span> Series {{ blog.seriesTotal }} </span>
+      <span> Article {{ blog.articleTotal }} </span>
     </div>
-</template> 
+    <div>
+      <span> Copyright (c) 2021-present, Kamtao (To) Lew </span>
+      <span> Inspired by Visual Studio Code </span>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .footer {
-    height: 22px;
-    background-color: var(--blue06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  height: 22px;
+  background-color: var(--blue06);
+  color: var(--base02);
+  font-size: 13px;
+  padding: 0px 15px;
+  div {
+    display: flex;
+    gap: 30px;
+  }
 }
-</style> 
-   
+</style>
