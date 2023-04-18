@@ -25,16 +25,16 @@ const { language } = useNavigatorLanguage();
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
-
+  gap: 20px;
   height: 22px;
+  white-space: nowrap;
   background-color: var(--blue06);
   color: var(--base02);
   font-size: 13px;
   padding: 0px 15px;
   div {
     display: flex;
-    gap: 30px;
+    gap: 20px;
   }
 }
 </style>

@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref } from "vue";
+const loginOut = () => {
+  useCookie("token").value = null;
+  location.reload();
+};
 </script>
 
 <template>
   <div class="setting">
     <div class="title">设置面板</div>
-    <div class="content">待完善</div>
+    <div class="main">
+      <div @click="loginOut" class="vs-button">退出登陆</div>
+    </div>
   </div>
 </template>
 
@@ -14,7 +19,9 @@ import { ref } from "vue";
   .title {
     padding: 5px 10px;
   }
-  .content {
+  .main {
+    display: flex;
+    align-items: center;
     padding: 5px 10px;
   }
 }
