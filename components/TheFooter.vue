@@ -7,15 +7,16 @@ const { language } = useNavigatorLanguage();
 <template>
   <div class="footer">
     <div>
+      <span> Copyright (c) 2021-present, Kamtao (To) Lew </span>
+      <span> Inspired by Visual Studio Code </span>
+      <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备18056223号</a>
+    </div>
+    <div>
       <span> Current version 1.12.0 </span>
       <span> PATH {{ route.path }} </span>
       <span> Language {{ language }} </span>
       <span> Series {{ blog.seriesTotal }} </span>
       <span> Article {{ blog.articleTotal }} </span>
-    </div>
-    <div>
-      <span> Copyright (c) 2021-present, Kamtao (To) Lew </span>
-      <span> Inspired by Visual Studio Code </span>
     </div>
   </div>
 </template>
@@ -35,6 +36,9 @@ const { language } = useNavigatorLanguage();
   div {
     display: flex;
     gap: 20px;
+  }
+  a {
+    color: #fff;
   }
 }
 </style>
