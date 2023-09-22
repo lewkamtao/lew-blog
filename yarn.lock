@@ -1726,6 +1726,9 @@
   dependencies:
     "prr" "~1.0.1"
 
+"esbuild-windows-64@0.15.10":
+  "version" "0.15.10"
+
 "esbuild@^0.15.8", "esbuild@^0.15.9":
   "integrity" "sha512-N7wBhfJ/E5fzn/SpNgX+oW2RLRjwaL8Y0ezqNqhjD6w0H2p0rDuEz2FKZqpqLnO8DCaWumKe8dsC/ljvVSSxng=="
   "resolved" "https://registry.npmmirror.com/esbuild/-/esbuild-0.15.10.tgz"

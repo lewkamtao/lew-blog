@@ -55,7 +55,7 @@ const fetch = (url: string, options?: any): Promise<any> => {
           if (res?.code == 401) {
             var redirectUrl = window.location.href;
             window.location.replace(
-              `https://sso.kamtao.com?redirectUrl=${redirectUrl}`
+              `https://app.tngeek.com/sso/?redirectUrl=${redirectUrl}`
             );
           }
         }
