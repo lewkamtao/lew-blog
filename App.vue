@@ -1,55 +1,51 @@
 <script setup lang="ts">
-const { $api } = useNuxtApp();
+const { $api } = useNuxtApp()
 
 // 获取 url 参数
 const setToken = () => {
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split('=');
-        if (pair[0] == 'token') {
-            delToken();
-            const token = useCookie('token')
-            token.value = pair[1];
-            return;
-        }
-    }
-    return false;
-};
+  const fullUrl = window.location.href
+  const urlObj = new URL(fullUrl)
 
-// 去除token
-const delToken = () => {
-    var url = window.location.protocol + '//' + window.location.host;
-    window.location.replace(url);
-};
+  // 获取token参数的值
+  const token = urlObj.searchParams.get('token')
+  if (token) {
+    // 保存token到本地存储
+    const cookieToken = useCookie('token')
+    cookieToken.value = token
+    // 删除URL中的token参数
+    urlObj.searchParams.delete('token')
+
+    // 替换浏览器地址栏中的URL
+    window.history.replaceState({}, document.title, urlObj.toString())
+  }
+}
+
 onMounted(() => {
-    // 设置token
-    setToken();
-});
+  // 设置token
+  setToken()
+})
+</script>
 
-</script>  
-  
 <template>
-    <div class="b1">
-        <NuxtLayout>
-            <NuxtPage />
-        </NuxtLayout>
-    </div>
+  <div class="b1">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
 
 <style lang="less">
-@import "~/assets/styles/seti/index.less";
-@import "~/assets/styles/md.less";
-
+@import '~/assets/styles/seti/index.less';
+@import '~/assets/styles/md.less';
 </style>
 
 <style lang="scss">
-@import "~/assets/styles/codicon.scss";
-@import "~/assets/styles/var.scss";
-@import "~/assets/styles/reset.scss";
-@import "~/assets/styles/main.scss";
+@import '~/assets/styles/codicon.scss';
+@import '~/assets/styles/var.scss';
+@import '~/assets/styles/reset.scss';
+@import '~/assets/styles/main.scss';
 body {
-    background-color: var(--base20);
-    color: var(--base06)
+  background-color: var(--base20);
+  color: var(--base06);
 }
-</style>  
+</style>
