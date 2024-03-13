@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { toLogin } from "@/utils";
+const isLogin = ref(!!useCookie("token").value);
 const loginOut = () => {
   useCookie("token").value = null;
   location.reload();
@@ -9,7 +11,8 @@ const loginOut = () => {
   <div class="setting">
     <div class="title">设置面板</div>
     <div class="main">
-      <div @click="loginOut" class="vs-button">退出登陆</div>
+      <div v-if="!isLogin" @click="toLogin" class="vs-button">立即登录</div>
+      <div v-else @click="loginOut" class="vs-button">退出登陆</div>
     </div>
   </div>
 </template>

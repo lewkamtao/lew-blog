@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toLogin } from "@/utils";
+import { toLogin, dateFormat } from "@/utils";
 import { useMagicKeys } from "@vueuse/core";
 const { enter, control } = useMagicKeys();
 
@@ -107,7 +107,12 @@ const cancelReply = () => {
                 <img class="avatar" :src="item.user.avatar" alt="" srcset="" />
               </div>
               <div class="right">
-                <div class="nickname">{{ item.user.nickname || "未命名" }}</div>
+                <div class="nickname">
+                  <span>{{ item.user.nickname || "未命名" }}</span>
+                  <span class="created-at">
+                    {{ dateFormat(item.created_at) }}
+                  </span>
+                </div>
                 <div class="content">{{ item.content }}</div>
               </div>
             </div>
@@ -129,7 +134,10 @@ const cancelReply = () => {
                   </div>
                   <div class="right">
                     <div class="nickname">
-                      {{ child.user.nickname || "未命名" }}
+                      <span> {{ child.user.nickname || "未命名" }} </span>
+                      <span class="created-at">
+                        {{ dateFormat(item.created_at) }}
+                      </span>
                     </div>
                     <div class="content">
                       <span class="reply-user"
@@ -210,7 +218,7 @@ const cancelReply = () => {
     .comment-item {
       display: flex;
       gap: 10px;
-      padding: 10px;
+      padding: 10px 10px 5px 10px;
       box-sizing: border-box;
       cursor: pointer;
     }
@@ -231,7 +239,14 @@ const cancelReply = () => {
       width: calc(100% - 45px);
 
       .nickname {
+        display: flex;
+        justify-content: space-between;
         font-size: 12px;
+        margin-top: -2px;
+		opacity: 0.7;
+        .created-at {
+          opacity: 0.2;
+        }
       }
 
       .content {
