@@ -19,7 +19,12 @@ const search = (e) => {
     return;
   }
   timer = setTimeout(async () => {
-    var res = await $api.get("/app/article/list?limit=2000&title=" + v);
+    var res = await $api.get("/app/article/list", {
+      params: {
+        limit: 2000,
+        title: v,
+      },
+    });
     list.value = res.data;
     total.value = res.total || 0;
   }, 250);
@@ -52,7 +57,11 @@ const toArticle = (id: Number) => {
     />
     <div v-if="keyword" class="total">共查询 {{ total }} 个结果</div>
     <div class="list">
-      <div v-for="(article, index) in list" :key="index" class="item article-item">
+      <div
+        v-for="(article, index) in list"
+        :key="index"
+        class="item article-item"
+      >
         <div
           class="item-box"
           @click="toArticle(article.id)"

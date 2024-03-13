@@ -44,7 +44,7 @@ watch(menuActive, (v) => {
   changeMode(list.find((e) => e.mode == v));
 });
 
-const changeMode = (item) => {
+const changeMode = (item: any) => {
   if (item?.link) {
     window.open(item.link, "_blank");
   } else {
@@ -53,7 +53,7 @@ const changeMode = (item) => {
 
   if (item.mode == "search") {
     nextTick(() => {
-      document.getElementById("search-input").focus();
+      document.getElementById("search-input")?.focus();
     });
   }
 };
@@ -70,7 +70,11 @@ const changeMode = (item) => {
           class="item"
           :class="mode == item.mode ? 'active' : ''"
         >
-          <i class="codicon" :class="`codicon-${item.icon}`" aria-hidden="true"></i>
+          <i
+            class="codicon"
+            :class="`codicon-${item.icon}`"
+            aria-hidden="true"
+          ></i>
           <div v-if="item.mode == 'links'" class="vs-badge">9</div>
           <div v-if="item.mode == 'comment'" class="vs-badge">2</div>
         </div>
@@ -83,7 +87,11 @@ const changeMode = (item) => {
           class="item"
           :class="{ active: mode == item.mode }"
         >
-          <i class="codicon" :class="`codicon-${item.icon}`" aria-hidden="true"></i>
+          <i
+            class="codicon"
+            :class="`codicon-${item.icon}`"
+            aria-hidden="true"
+          ></i>
         </div>
       </div>
     </div>

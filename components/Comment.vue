@@ -12,8 +12,8 @@ watchEffect(() => {
 const { $api } = useNuxtApp();
 const route = useRoute();
 const isLogin = ref(!!useCookie("token").value);
-const list = ref([]);
-const total = ref(0);
+const list: any = ref([]);
+const total: any = ref(0);
 const content = ref("");
 const comment_id = ref(0);
 const loading = ref(false);
@@ -25,11 +25,17 @@ const reply = ref({
 });
 
 const getList = async () => {
-  const res = await $api.get(
-    `/app/comment/list?article_id=${article_id}&key=${new Date().getTime()}`
-  );
-  list.value = res.data;
-  total.value = res.total;
+  const res = await $api.get(`/app/comment/list`, {
+    params: {
+      article_id: article_id,
+      key: String(new Date().getTime()),
+    },
+  });
+  if (res) {
+    const { data, total: _total } = res;
+    list.value = data;
+    total.value = _total;
+  }
 };
 
 getList();
@@ -68,12 +74,12 @@ const initForm = () => {
   comment_id.value = 0;
 };
 
-const setReply = (item) => {
+const setReply = (item: any) => {
   reply.value = item.user;
   comment_id.value = item.id;
 };
 
-const setChildReply = (child) => {
+const setChildReply = (child: any) => {
   reply.value = child.user;
   comment_id.value = child.comment_id;
 };
@@ -243,7 +249,7 @@ const cancelReply = () => {
         justify-content: space-between;
         font-size: 12px;
         margin-top: -2px;
-		opacity: 0.7;
+        opacity: 0.7;
         .created-at {
           opacity: 0.2;
         }

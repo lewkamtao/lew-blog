@@ -5,29 +5,33 @@ const router = useRouter();
 const series: any = ref([]);
 const curId = ref();
 
-series.value = (await $api.get("/app/series/list")).data;
-let seriestotal = (await $api.get("/app/series/list")).total;
-let articleTotal = (await $api.get("/app/article/list")).total;
+series.value = (await $api.get("/app/series/list", {})).data;
+let seriestotal = (await $api.get("/app/series/list", {})).total;
+let articleTotal = (await $api.get("/app/article/list", {})).total;
 let blog: any = useBlog();
 blog.value = {
   seriesTotal: seriestotal,
   articleTotal: articleTotal,
 };
 
-watch(route, (v) => {
-  const id = route.params.id;
-  curId.value = id;
-});
+watch(
+  () => router.currentRoute.value.path,
+  () => {
+    const id = route.params.id;
+    curId.value = id;
+  },
+  { immediate: true, deep: true }
+);
 
 const seriesActive = useSeriesActive();
 watch(seriesActive, (v) => {
-  series.value = series.value.map((e) => {
+  series.value = series.value.map((e: any) => {
     return {
       ...e,
       isShow: false,
     };
   });
-  let index = series.value.findIndex((e) => e.id == v);
+  let index = series.value.findIndex((e: any) => e.id == v);
   series.value[index].isShow = true;
 });
 

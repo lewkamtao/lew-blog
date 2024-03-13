@@ -1,17 +1,25 @@
 <script setup lang="ts">
 const { $api } = useNuxtApp();
-let articles = ref([]);
-let series = ref([]);
+let articles: any = ref([]);
+let series: any = ref([]);
 let articlesTotal = ref(0);
 
 const getArticle = async () => {
-  const { data, total } = await $api.get("/app/article/list?limit=20");
+  const { data, total } = await $api.get("/app/article/list", {
+    params: {
+      limit: 20,
+    },
+  });
   articles.value = data;
   articlesTotal.value = total;
 };
 
 const getSeries = async () => {
-  const { data } = await $api.get("/app/series/list?limit=100");
+  const { data } = await $api.get("/app/series/list", {
+    params: {
+      limit: 100,
+    },
+  });
   series.value = data;
 };
 
@@ -20,14 +28,18 @@ getSeries();
 
 const isMore = ref(false);
 const moreArticle = async () => {
-  const { data } = await $api.get("/app/article/list?limit=100");
+  const { data } = await $api.get("/app/article/list", {
+    params: {
+      limit: 100,
+    },
+  });
   articles.value = data;
   isMore.value = true;
 };
 
 const menuActive = useMenuActive();
 
-const toMenu = (mode) => {
+const toMenu = (mode: string) => {
   menuActive.value = mode;
 };
 

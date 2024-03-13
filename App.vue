@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { $api } = useNuxtApp();
-
 // 获取 url 参数
 const setToken = () => {
   const fullUrl = window.location.href;
@@ -27,6 +25,7 @@ onBeforeMount(() => {
 
 <template>
   <div class="b1">
+    <NuxtLoadingIndicator color="#999" :height="2" />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

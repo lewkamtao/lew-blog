@@ -13,10 +13,14 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       api: {
-        get: (url, params?) => fetch(url, { method: "get", ...params }),
-        put: (url, params?) => fetch(url, { method: "put", ...params }),
-        post: (url, params?) => fetch(url, { method: "post", ...params }),
-        delete: (url, params?) => fetch(url, { method: "delete", ...params }),
+        get: (url: any, params: any) =>
+          fetch(url, { method: "get", ...params }),
+        put: (url: any, params: any) =>
+          fetch(url, { method: "put", ...params }),
+        post: (url: any, params: any) =>
+          fetch(url, { method: "post", ...params }),
+        delete: (url: any, params: any) =>
+          fetch(url, { method: "delete", ...params }),
       },
     },
   };
@@ -31,9 +35,9 @@ export interface ResponseConfig {
 
 const fetch = (url: string, options?: any): Promise<any> => {
   const reqUrl = baseUrl + url;
-  let token = "";
+  let token: any = "";
   if (useCookie("token")?.value) {
-    token = useCookie("token")?.value.replace(/Bearer\+/, "Bearer ");
+    token = useCookie("token")?.value?.replace(/Bearer\+/, "Bearer ");
   }
 
   const key = options.method == "get" ? reqUrl : String(new Date().getTime());
