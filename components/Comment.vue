@@ -26,7 +26,7 @@ const reply = ref({
 
 const getList = async () => {
   const res = await $api.get(
-    `/blog/app/comment/list?article_id=${article_id}&key=${new Date().getTime()}`
+    `/app/comment/list?article_id=${article_id}&key=${new Date().getTime()}`
   );
   list.value = res.data;
   total.value = res.total;
@@ -40,7 +40,7 @@ const send = async () => {
   }
   loading.value = true;
   $api
-    .post("/blog/app/comment", {
+    .post("/app/comment", {
       body: {
         article_id: article_id,
         content: content.value,

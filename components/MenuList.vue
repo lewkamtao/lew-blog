@@ -5,9 +5,9 @@ const router = useRouter();
 const series: any = ref([]);
 const curId = ref();
 
-series.value = (await $api.get("/blog/app/series/list")).data;
-let seriestotal = (await $api.get("/blog/app/series/list")).total;
-let articleTotal = (await $api.get("/blog/app/article/list")).total;
+series.value = (await $api.get("/app/series/list")).data;
+let seriestotal = (await $api.get("/app/series/list")).total;
+let articleTotal = (await $api.get("/app/article/list")).total;
 let blog: any = useBlog();
 blog.value = {
   seriesTotal: seriestotal,

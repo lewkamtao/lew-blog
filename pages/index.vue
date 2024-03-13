@@ -5,13 +5,13 @@ let series = ref([]);
 let articlesTotal = ref(0);
 
 const getArticle = async () => {
-  const { data, total } = await $api.get("/blog/app/article/list?limit=20");
+  const { data, total } = await $api.get("/app/article/list?limit=20");
   articles.value = data;
   articlesTotal.value = total;
 };
 
 const getSeries = async () => {
-  const { data } = await $api.get("/blog/app/series/list?limit=100");
+  const { data } = await $api.get("/app/series/list?limit=100");
   series.value = data;
 };
 
@@ -20,7 +20,7 @@ getSeries();
 
 const isMore = ref(false);
 const moreArticle = async () => {
-  const { data } = await $api.get("/blog/app/article/list?limit=100");
+  const { data } = await $api.get("/app/article/list?limit=100");
   articles.value = data;
   isMore.value = true;
 };

@@ -8,7 +8,7 @@ const route = useRoute();
 const id = route.params.id;
 
 let article = ref({});
-const { data } = await $api.get("/blog/app/article/" + id);
+const { data } = await $api.get("/app/article/" + id);
 article.value = data;
 useHead({
   title: article.value.title,

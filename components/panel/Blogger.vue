@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 
 const { $api } = useNuxtApp();
 let blogger = ref({});
-blogger.value = (await $api.get("/blog/app/blogger")).data;
+blogger.value = (await $api.get("/app/blogger")).data;
 </script>
 
 <template>

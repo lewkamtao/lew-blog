@@ -1,6 +1,6 @@
 import { defineNuxtPlugin } from "#app";
 
-let baseUrl = "https://api.lew.kamtao.com";
+let baseUrl = "https://app.tngeek.com/api_blog";
 
 // 指定后端返回的基本数据类型
 export interface ResponseConfig {
